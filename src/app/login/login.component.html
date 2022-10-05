@@ -1,0 +1,25 @@
+<div class="container w-50 mt-5 p-5 border border-secondary border-2 rounded-3">
+    <form class="row g-3" [formGroup]="loginform" (ngSubmit)="login()">
+        <h2 class="text-center">Login</h2>
+        <div class="col-12">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input type="text" class="form-control" formControlName="email" />
+          <div *ngIf="loginform.get('email')?.touched && loginform.get('email')?.invalid">
+            <span class="text-danger" *ngIf="loginform.get('email')?.errors?.['required']">Email is required</span>
+            <span class="text-danger" *ngIf="loginform.get('email')?.errors?.['pattern']">Invalid format</span>
+          </div>
+        </div>
+        <div class="col-12">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" class="form-control" formControlName="password"/>
+          <div *ngIf="loginform.get('password')?.touched && loginform.get('password')?.invalid">
+            <span class="text-danger" *ngIf="loginform.get('password')?.errors?.['required']">Password is required</span>
+            <span class="text-danger" *ngIf="loginform.get('password')?.errors?.['minlength']">Minimun length must be 8 characters</span>
+          </div>
+
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </form>
+</div>

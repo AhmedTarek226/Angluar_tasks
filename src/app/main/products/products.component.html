@@ -1,0 +1,84 @@
+<!-- <div
+ class="product"
+>
+  <h1>{{ store_name }}</h1>
+  <img [src]="store_logo" />
+  <h3 *ngIf="ShowH3Func()">We offer an explicit discount of:{{ discount }}%</h3>
+  <select name="categories">
+    <option *ngFor="let category of categories">{{ category }}</option>
+  </select>
+</div> -->
+<div class="container w-50 mt-2 px-4 py-3 border border-secondary border-2 rounded-3">
+  <form class="row g-3" [formGroup]="addProduct" (ngSubmit)="AddProduct()">
+      <h3 class="text-center">Add Product</h3>
+      
+      <div class="col-5">
+        <label class="form-label">Product name</label>
+        <input type="text" class="form-control" formControlName="name" />
+        <div *ngIf="addProduct.get('name')?.touched && addProduct.get('name')?.invalid">
+          <span class="text-danger" *ngIf="addProduct.get('name')?.errors?.['required']">Product name is required</span>
+        </div>
+      </div>
+      <div class="col-7">
+        <label class="form-label">Image URL</label>
+        <input type="text" class="form-control" formControlName="img"/>
+        <div *ngIf="addProduct.get('img')?.touched && addProduct.get('img')?.invalid">
+          <span class="text-danger" *ngIf="addProduct.get('img')?.errors?.['required']">Image URL is required</span>
+          <span class="text-danger" *ngIf="addProduct.get('img')?.errors?.['pattern']">Invalid pattern</span>
+        </div>
+
+      </div>
+      <div class="col-4">
+        <label class="form-label">Price</label>
+        <input type="number" class="form-control" formControlName="price" />
+        <div *ngIf="addProduct.get('price')?.touched && addProduct.get('price')?.invalid">
+          <span class="text-danger" *ngIf="addProduct.get('price')?.errors?.['required']">Price is required</span>
+          <span class="text-danger" *ngIf="addProduct.get('price')?.errors?.['min']">Must be greater than 1</span>
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Quantity</label>
+        <input type="text" class="form-control" formControlName="quantity" />
+        <div *ngIf="addProduct.get('quantity')?.touched && addProduct.get('quantity')?.invalid">
+          <span class="text-danger" *ngIf="addProduct.get('quantity')?.errors?.['required']">Quantity is required</span>
+          <span class="text-danger" *ngIf="addProduct.get('quantity')?.errors?.['min']">Must be greater than 1</span>
+        </div>
+      </div>
+      <div class="col-5">
+        <label class="form-label">Category Id</label>
+        <input type="number" class="form-control" formControlName="categoryId">
+        <div *ngIf="addProduct.get('categoryId')?.touched && addProduct.get('categoryId')?.invalid">
+          <span class="text-danger" *ngIf="addProduct.get('categoryId')?.errors?.['required']">Category id is required</span>
+        </div>
+
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary w-100">Add</button>
+      </div>
+    </form>
+</div>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Product name</th>
+        <th scope="col">Image<img></th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <th scope="row">{{product.id}}</th>
+        <td>{{product.name}}</td>
+        <td><img [src]="product.img" width="100px"></td>
+        <td>{{product.price}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.categoryId}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
