@@ -1,61 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Category, IProduct } from 'src/app/shared/product';
+import { Category } from 'src/app/model/category';
+import { IProduct } from 'src/app/model/product';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-// export class ProductsComponent implements OnInit {
-//   store_name:string = "";
-//   store_logo:string = "";
-//   product_list:IProduct[]=[];
-//   client_name:string="";
-//   is_purchased:boolean = false;
-//   discount:number=0;
-//   showH3:boolean=false;
-//   categories:string[]=[
-//     "mobiles",
-//     "tablets",
-//     "home applicances",
-//     "games"
-//   ];
-
-//   constructor() {
-//     this.store_name = "oddies",
-//     this.store_logo = "../../../assets/icon.png",
-//     this.client_name = "Ahmed",
-//     this.is_purchased = false
-//    }
-
-//   ngOnInit(): void {
-//   }
-
-//   ShowH3Func (){
-//     this.discount = 5;
-//     if(this.discount === 0){
-//       console.log(typeof(this.discount));
-//       this.showH3 = false;
-//       return false;
-//     }
-//     else
-//     {
-//       console.log(this.discount);
-//       this.showH3 = true;
-//       return true;
-//     }
-//   }
-
-// }
 
 export class ProductsComponent implements OnInit {
   products:IProduct[]=[];
   categories:Category[]=[];
   addProduct: FormGroup;
   date=Date.now();
-
- 
 
   constructor() {
     this.addProduct = new FormGroup({

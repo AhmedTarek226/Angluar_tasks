@@ -1,0 +1,109 @@
+<div class="container w-50 mt-4 py-4 px-5 border border-secondary border-2 rounded-3">
+  <form class="row g-3" [formGroup]="registerform" (ngSubmit)="Register()">
+    <h2 class="text-center">Register</h2>
+    <div class="col-12">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" formControlName="name" />
+      <div
+        *ngIf="
+          registerform.get('name')?.touched && registerform.get('name')?.invalid
+        "
+      >
+        <span
+          class="text-danger"
+          *ngIf="registerform.get('name')?.errors?.['required']"
+          >Name is required</span
+        >
+      </div>
+    </div>
+    <div class="col-12">
+      <label class="form-label">Username</label>
+      <input type="text" class="form-control" formControlName="username" />
+      <div
+        *ngIf="
+          registerform.get('username')?.touched &&
+          registerform.get('username')?.invalid
+        "
+      >
+        <span
+          class="text-danger"
+          *ngIf="registerform.get('username')?.errors?.['required']"
+          >Username is required</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="registerform.get('username')?.errors?.['whitespace']"
+          >Username must haven't white spaces</span
+        >
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="text" class="form-control" formControlName="email" />
+      <div
+        *ngIf="
+          registerform.get('email')?.touched &&
+          registerform.get('email')?.invalid
+        "
+      >
+        <span
+          class="text-danger"
+          *ngIf="registerform.get('email')?.errors?.['required']"
+          >Email is required</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="registerform.get('email')?.errors?.['pattern']"
+          >Invalid format</span
+        >
+      </div>
+    </div>
+    <div class="col-12">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" formControlName="password" />
+      <div
+        *ngIf="
+          registerform.get('password')?.touched &&
+          registerform.get('password')?.invalid
+        "
+      >
+        <span
+          class="text-danger"
+          *ngIf="registerform.get('password')?.errors?.['required']"
+          >Password is required</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="registerform.get('password')?.errors?.['minlength']"
+          >Minimun length must be 8 characters</span
+        >
+      </div>
+    </div>
+    <div class="col-12">
+      <label class="form-label">Confirm password</label>
+      <input
+        type="confirmPassword"
+        class="form-control"
+        formControlName="confirmPassword"
+      />
+      <div
+        *ngIf="
+          registerform.get('confirmPassword')?.touched &&
+          registerform.get('confirmPassword')?.invalid
+        "
+      >
+        <span
+          class="text-danger"
+          *ngIf="registerform.get('confirmPassword')?.errors?.['required']"
+          >Confirm password is required</span
+        >
+      </div>
+      <div *ngIf="passwordMatchError">
+        <span class="text-danger">Password isn't match</span>
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+  </form>
+</div>

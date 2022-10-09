@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Category</h4>
+        <div class="form-floating mb-3">
+          <select 
+            class="form-select"
+            id="categories_id"
+            [(ngModel)] = "selectedCategory"
+            (change)="categorySelected()"
+            >
+            <option 
+            *ngFor="let category of categories"
+            [value]="category.id"
+            [selected]="category.id == selectedCategory"
+            >
+                {{category.name}}
+            </option>
+          </select>
+        </div>
+    </div>
+</div>
+
+<app-product-child [selectedCategory]="selectedCategory" (handleList)="recieveCartItems($event)"></app-product-child>
+
+<hr>
+<h3>Total Price: {{totalPrice}}</h3>
