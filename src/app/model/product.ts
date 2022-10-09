@@ -7,7 +7,3 @@ export interface IProduct{
     categoryId:number;
 }
 
-export class Category{
-    id:number=1;
-    name:string="cars";
-}

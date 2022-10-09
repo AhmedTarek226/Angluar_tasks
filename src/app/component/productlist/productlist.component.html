@@ -1,0 +1,24 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Product name</th>
+        <th scope="col">Image<img></th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of productList">
+        <th scope="row">{{product.id}}</th>
+        <td>{{product.name}}</td>
+        <td><img [src]="product.img" width="100px"></td>
+        <td>{{product.price}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.categoryId}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
