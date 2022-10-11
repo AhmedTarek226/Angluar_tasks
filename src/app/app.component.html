@@ -3,8 +3,10 @@
 <app-main></app-main>
 <app-footer></app-footer> -->
 <app-navbar></app-navbar>
+<!-- <app-loader *ngIf="isLoading"></app-loader> -->
+<app-loader *ngIf="isLoading|async"></app-loader>
 <!-- <app-register></app-register> -->
 <!-- <app-login></app-login> -->
 <!-- <app-product-parent></app-product-parent> -->
 <!-- <app-productlist></app-productlist> -->
-<router-outlet></router-outlet>
+<router-outlet ></router-outlet>
